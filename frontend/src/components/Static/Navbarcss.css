@@ -1,0 +1,28 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+.dropdown {
+  display:inline-block;
+  position:relative;
+  margin-right: 20px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  /* width: 0%; */
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+  width: 120px;
+  right: 2px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  color: #ffffff;
+  background-color: #00a4bd;
+}

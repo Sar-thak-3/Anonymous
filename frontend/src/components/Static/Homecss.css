@@ -1,0 +1,128 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.card {
+    position:-webkit-sticky;
+    height: 450px;
+    width: 900px;
+    margin: 50px auto;
+    background-color: #FFF;
+    -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* Image on the left side */
+.thumbnail {
+    float: left;
+    position: relative;
+    left: 30px;
+    top: 30px;
+    height: 320px;
+    width: 500px;
+}
+
+img.left {
+    position: absolute;
+    left: 50%;
+    height: auto;
+    width: 100%;
+    transform: translate(-50%);
+}
+
+/* Right side of the card */
+.right {
+    margin-left: 590px;
+    margin-right: 20px;
+}
+
+h1 {
+    padding-top: 15px;
+    font-size: 1.3rem;
+    color: #4B4B4B;
+}
+
+.author {
+    background-color: #9ECAFF;
+    height: 30px;
+    width: 90px;
+    border-radius: 20px;
+}
+
+h2 {
+    padding-top: 8px;
+    margin-right: 6px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.separator {
+    margin-top: 10px;
+    border: 1px solid #C3C3C3;
+}
+
+p {
+    text-align: justify;
+    padding-top: 10px;
+    font-size: 0.95rem;
+    line-height: 150%;
+    color: #4B4B4B;
+}
+
+h6 {
+    font-size: 1.2rem;
+    color: gray;
+}
+
+li {
+    display: inline;
+    list-style: none;
+    padding-right: 40px;
+    color: #7B7B7B;
+}
+
+/* Floating action button */
+.fab {
+    position: absolute;
+    right: 20px;
+    bottom: -25px;
+    box-sizing: border-box;
+    padding-top: 9px;
+    background-color: #1875D0;
+    width: 50px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
+}
+.fab:hover{
+    width: 53px;
+    height: 53px;
+    text-align: center;
+    align-items: center;
+}
+
+.date {
+    /* width: 200px; */
+    display: flex;
+    background: "transparent";
+    /* color: #4B4B4B; */
+    /* transform: translate(0, 300%); */
+}
+.tags{
+    padding-top: 1em;
+    display: flex;
+}
+.made-center{
+    width: 500px;
+    transform: translate(-90%);
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
