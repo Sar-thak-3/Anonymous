@@ -41,7 +41,7 @@ const Createpost = (props) => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
         console.log(file);
-        const response = await fetch(`http://localhost:5000/api/posts/createpost`,{
+        const response = await fetch(`https://anonymous-4g42.vercel.app/api/posts/createpost`,{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

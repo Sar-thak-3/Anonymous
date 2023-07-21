@@ -19,7 +19,7 @@ const Signup = () => {
         e.preventDefault();
         const {username,password,repeatPassword} = credentials;
         if(password===repeatPassword){
-            const response = await fetch("http://localhost:5000/api/auth/createuser",{
+            const response = await fetch("https://anonymous-4g42.vercel.app/api/auth/createuser",{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

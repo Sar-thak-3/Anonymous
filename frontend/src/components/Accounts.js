@@ -9,7 +9,7 @@ const Accounts = (props) => {
     const [posts,setPosts] = useState(null);
 
     const getPosts = async()=>{
-        const response = await fetch(`http://localhost:5000/api/posts/fetchcommunityposts/?community=${query.get("community")}` , {
+        const response = await fetch(`https://anonymous-4g42.vercel.app/api/posts/fetchcommunityposts/?community=${query.get("community")}` , {
             method: "GET",
         })
         const res = await response.json()

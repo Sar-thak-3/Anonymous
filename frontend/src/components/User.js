@@ -15,7 +15,8 @@ const User = () => {
   const getPosts = async () => {
     if (token) {
       const response = await fetch(
-        "http://localhost:5000/api/posts/fetchuserposts",
+        // "http://localhost:5000/api/posts/fetchuserposts",
+        "https://anonymous-4g42.vercel.app/api/posts/fetchuserposts",
         {
           method: "GET",
           headers: {

@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const Home = () => {
     const [ress,setRes] = useState();
-    const host = "http://localhost:5000"
+    const host = "https://anonymous-4g42.vercel.app"
     const getNotes = async()=>{
         const response = await fetch(`${host}/api/posts/fetchallposts`,{
             method: "GET"

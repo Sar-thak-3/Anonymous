@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
             <img
-              src="D:\Anomynous\frontend\src\components\Static\logo.png"
+              src={require("./Static/logo.png")}
               width="112"
               height="28"
               alt="logo"

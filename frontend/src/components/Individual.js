@@ -38,7 +38,7 @@ const Individual = () => {
     }
 
     const getIndividualPosts = async()=>{
-        const response = await fetch(`http://localhost:5000/api/posts/fetchpost` , {
+        const response = await fetch(`https://anonymous-4g42.vercel.app/api/posts/fetchpost` , {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
