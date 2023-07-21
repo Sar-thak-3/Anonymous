@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb://localhost:27017/Anomynous";
+require('dotenv').config()
 
 const connectToMongo = ()=>{
-    mongoose.connect(mongoURI , ()=>{
+    mongoose.connect(process.env.MONGOURI , ()=>{
+        
         console.log("Connected to mongoose seccuessfully");
     })
 }

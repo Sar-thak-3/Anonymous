@@ -41,9 +41,7 @@ router.post('/createpost' ,fetchuser ,[
     body('content').isLength({min: 5})
 ], async(req,res)=>{
     try{
-        console.log(req.body);
         const {title,content,tags,img} = req.body;
-        console.log(img);
         const errors = validationResult(req);
         if(!errors.isEmpty()){
             return res.status(400).json({error: errors.array()});
