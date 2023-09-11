@@ -56,7 +56,7 @@ const Createpost = (props) => {
                 'Content-Type': 'application/json',
                 'authtoken': localStorage.getItem("token"),
             },
-            body: JSON.stringify({title: newpost.title,content: newpost.post,tags: alltags,img: file})
+            body: JSON.stringify({title: newpost.title,content: newpost.post,tags: alltags,img: previewSrc.imagePreview})
         })
         // const response = await fetch(`http://127.0.0.1:5000/api/posts/createpost`,{
         //     method: "POST",
