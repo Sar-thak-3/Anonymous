@@ -27,7 +27,6 @@ const User = () => {
       );
       const res = await response.json();
       setRess(res.posts);
-      console.log(ress);
     } else {
       history.push("/login");
     }

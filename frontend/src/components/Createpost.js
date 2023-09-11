@@ -3,12 +3,14 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./Static/Createpost.css";
+import {Img} from "react-image"
 
 const Createpost = (props) => {
     let history = useHistory();
     const [newpost,setNewpost] = useState({title: "",post: ""});
     const [alltags,setAlltags] = useState([]);
-    const [file,setFile] = useState();
+    // const [file,setFile] = useState();
+    const [previewSrc,setpreviewSrc] = useState({imagePreview: null})
     const [imagename,setImagename] = useState(null);
     let inputRef = useRef(null)
 
@@ -20,7 +22,6 @@ const Createpost = (props) => {
         e.preventDefault();
         if(!alltags.includes(e.target.previousElementSibling.value)){
             setAlltags([...alltags,e.target.previousElementSibling.value])
-            console.log(newpost);
         }
         e.target.previousElementSibling.value = "";
     }
@@ -30,17 +31,25 @@ const Createpost = (props) => {
     }
 
     const handleAddfile = (e)=>{
-      console.log(e.target.files);
-      setFile(e.target.files[0]);
-      if(inputRef.current.value!==""){
-        setImagename(inputRef.current.files[0].name);
+      if(e.target.files[0]){
+        let reader = new FileReader();
+        let fil = e.target.files[0];
+        setImagename(fil.name)
+        reader.onloadend = () => {
+          setpreviewSrc({...previewSrc,imagePreview: reader.result,file: fil})
+        };
+        reader.readAsDataURL(fil);
       }
-      console.log(file);
+      // console.log(e.target.files);
+      // setFile(e.target.files[0]);
+      // if(inputRef.current.value!==""){
+      //   setImagename(inputRef.current.files[0].name);
+      // }
+      // console.log(file);
     }
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
-        console.log(file);
         const response = await fetch(`https://anonymous-4g42.vercel.app/api/posts/createpost`,{
             method: "POST",
             headers: {
@@ -49,8 +58,15 @@ const Createpost = (props) => {
             },
             body: JSON.stringify({title: newpost.title,content: newpost.post,tags: alltags,img: file})
         })
+        // const response = await fetch(`http://127.0.0.1:5000/api/posts/createpost`,{
+        //     method: "POST",
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'authtoken': localStorage.getItem("token"),
+        //     },
+        //     body: JSON.stringify({title: newpost.title,content: newpost.post,tags: alltags,img: previewSrc.imagePreview})
+        // })
         const json = await response.json();
-        console.log(json);
         if(json.success){
             history.push("/user");
             props.cancel(false);

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Link,useParams } from "react-router-dom";
+import {Img} from "react-image";
 
 const Individual = () => {
     const {id} = useParams();
-    console.log(id);
     const history = useHistory();
     const [comment,setComment] = useState("");
     const [allowcomment, setAllowcomment] = useState(localStorage.getItem("token"));
@@ -38,7 +38,10 @@ const Individual = () => {
     }
 
     const getIndividualPosts = async()=>{
-        const response = await fetch(`https://anonymous-4g42.vercel.app/api/posts/fetchpost` , {
+        const response = await fetch(
+          `https://anonymous-4g42.vercel.app/api/posts/fetchpost` ,
+          // `http://127.0.0.1:5000/api/posts/fetchpost` , 
+          {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -86,19 +89,17 @@ const Individual = () => {
             </div>
           </div>
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">{ress.title}</h5>
             <p className="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              {ress.content}
             </p>
             <p className="card-text">
               <small className="text-muted">Last updated 3 mins ago</small>
             </p>
           </div>
-          <img
+          <Img
             className="card-img-bottom"
-            src="https://th.bing.com/th/id/OIP.U0eJqMMa4V_0H3n3A6TZkwHaEV?pid=ImgDet&rs=1"
+            src={ress.img}
             alt="Card cap"
           />
           <div>

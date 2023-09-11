@@ -17,7 +17,10 @@ const Login = () => {
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
-        const response = await fetch("https://anonymous-4g42.vercel.app/api/auth/login", {
+        const response = await fetch(
+            "https://anonymous-4g42.vercel.app/api/auth/login", 
+            // "http://127.0.0.1:5000/api/auth/login", 
+            {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

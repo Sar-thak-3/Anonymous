@@ -7,7 +7,7 @@ const {body,validationResult} = require('express-validator');
 
 router.get('/fetchuserposts' , fetchuser , async (req,res)=>{
     try{
-        const posts = await Post.find({user: req.user.id})
+        const posts = await Post.find({user: req.user.id});
         res.json({success: true , posts})
     }
     catch(err){
@@ -18,7 +18,6 @@ router.get('/fetchuserposts' , fetchuser , async (req,res)=>{
 
 router.get('/fetchallposts' , async(req,res)=>{
     const query = req.query;
-    // console.log(query)
     try{
         allPosts = await Post.find()
         if(query==={}){
@@ -27,7 +26,6 @@ router.get('/fetchallposts' , async(req,res)=>{
                 allPosts = posts
             }
         }
-        // console.log(allPosts);
         allPosts = allPosts.slice(0,20)
         res.status(200).json({posts: allPosts})
     }
@@ -49,7 +47,9 @@ router.post('/createpost' ,fetchuser ,[
         const post = new Post({
             title,tags,content,user: req.user.id
         });
-        post.img.Data = img;
+        post.img = img;
+        const username = await User.findById(req.user.id);
+        post.username = username.username;
         const savedpost = await post.save();
         res.json({success:true,savedpost});
     }
@@ -60,11 +60,10 @@ router.post('/createpost' ,fetchuser ,[
 
 })
 
-router.get("/fetchcommunityposts/" , async(req,res)=>{
+router.get("/fetchcommunityposts" , async(req,res)=>{
     const query = req.query;
-    console.log(query)
     try{
-        const user = await User.findOne({username: query.community})
+        const user = await User.findOne({username: query.community});
         const posts = await Post.find({user: user._id})
         res.json({success: true, posts: posts})
     }
@@ -79,7 +78,6 @@ router.get("/fetchpost", async(req,res)=>{
         const currpost = await Post.findById(req.header("postId"));
         if(currpost){
             const user = await User.findById(currpost.user);
-            console.log(user);
             const post = {
                 title: currpost.title,
                 tags: currpost.tags,
@@ -87,6 +85,7 @@ router.get("/fetchpost", async(req,res)=>{
                 date: currpost.date,
                 username: user.username,
                 comments: currpost.comments,
+                img: currpost.img,
             }
             res.json({success:true,post:post});
         }

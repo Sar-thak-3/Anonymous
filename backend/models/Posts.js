@@ -16,12 +16,15 @@ const PostSchema = new Schema({
         type: String
     },
     img: {
-        Data: Buffer,
-        ContentType: String,
+        type: String,
     },
     date: {
         type: Date,
         default: Date.now()
+    },
+    username: {
+        type: String,
+        required: true,
     }
 })
 
